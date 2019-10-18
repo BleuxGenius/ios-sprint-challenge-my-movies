@@ -6,6 +6,8 @@
 //  Copyright © 2018 Lambda School. All rights reserved.
 //
 
+//completed project submit to github updated
+
 import UIKit
 
 class MovieSearchTableViewController: UITableViewController, UISearchBarDelegate {
