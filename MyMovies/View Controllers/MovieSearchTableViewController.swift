@@ -2,7 +2,7 @@
 //  MovieSearchTableViewController.swift
 //  MyMovies
 //
-//  Created by Spencer Curtis on 8/17/18.
+//  Created by Dani on 8/17/18.
 //  Copyright © 2018 Lambda School. All rights reserved.
 //
 
@@ -44,4 +44,17 @@ class MovieSearchTableViewController: UITableViewController, UISearchBarDelegate
     var movieController = MovieController()
     
     @IBOutlet weak var searchBar: UISearchBar!
+    
+    @IBAction func addMovieButton(_ sender: UIButton) {
+        guard let cell = sender.superview?.superview as? UITableViewCell,
+            let title = cell.textLabel?.text,
+                    !title.isEmpty
+                    else {
+                        print("The movie has not added")
+                        return }
+        print("Yes \(title) has been added ")
+        
+        }
+   
+        
 }
