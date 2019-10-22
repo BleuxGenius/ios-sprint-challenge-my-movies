@@ -9,8 +9,16 @@
 import UIKit
 import CoreData
 
-class MyMoviesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class MyMoviesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, MyMovieTableViewCellDelegate {
+    
+    
+    func toggleHasWatched(cell: MyMoviesTableViewCell) {
+        guard let movie = cell.movie else { return }
+        movieController.toggleHasWatched(movie: movie)
+    }
+    
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -33,6 +41,7 @@ class MyMoviesTableViewController: UITableViewController, NSFetchedResultsContro
         try! frc.performFetch()
         return frc
     }()
+    
     
     
 
@@ -91,9 +100,11 @@ class MyMoviesTableViewController: UITableViewController, NSFetchedResultsContro
 
   
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as!
-        MyMoviesTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyMovieCell", for: indexPath) as?
+            MyMoviesTableViewCell else { return UITableViewCell()}
+        
         cell.movie = fetchedResultsController.object(at: indexPath)
+        cell.delegate = self
         cell.movieController = movieController
         return cell
     }

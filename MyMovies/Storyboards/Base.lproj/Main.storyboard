@@ -39,41 +39,39 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MovieCell" textLabel="EgU-i6-cdC" style="IBUITableViewCellStyleDefault" id="d7W-qE-xfL" customClass="MovieSearchTableViewCell" customModule="MyMovies" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MovieCell" id="d7W-qE-xfL" customClass="MovieSearchTableViewCell" customModule="MyMovies" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d7W-qE-xfL" id="8Bc-u1-IMl">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EgU-i6-cdC">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HZE-eB-AB5">
-                                            <rect key="frame" x="253" y="7" width="102" height="29.5"/>
+                                            <rect key="frame" x="253" y="7" width="102" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="102" id="DVF-ks-LP2"/>
                                             </constraints>
                                             <state key="normal" title="Add Movie"/>
                                             <connections>
-                                                <action selector="addMovieButton:" destination="YE2-Zi-kUT" eventType="touchUpInside" id="d67-Rx-FpJ"/>
-                                                <action selector="addMovieButtonPressed:" destination="d7W-qE-xfL" eventType="touchUpInside" id="4Oc-9K-Qj5"/>
+                                                <action selector="addMovieButtonPressed:" destination="d7W-qE-xfL" eventType="touchUpInside" id="SOZ-We-k5u"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLI-Jw-PBL">
+                                            <rect key="frame" x="41" y="12" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="HZE-eB-AB5" secondAttribute="trailing" constant="4" id="DVd-Zg-FkH"/>
-                                        <constraint firstItem="HZE-eB-AB5" firstAttribute="centerY" secondItem="EgU-i6-cdC" secondAttribute="centerY" id="EW8-DU-pGj"/>
                                         <constraint firstItem="HZE-eB-AB5" firstAttribute="top" secondItem="8Bc-u1-IMl" secondAttribute="topMargin" constant="-4" id="gnd-CA-jL9"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="addMovieButton" destination="HZE-eB-AB5" id="9Mo-HF-cU2"/>
-                                    <outlet property="movieTitleLabel" destination="EgU-i6-cdC" id="zQv-yI-3rm"/>
+                                    <outlet property="movieTitleLabel" destination="TLI-Jw-PBL" id="dzo-pG-Rdm"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -119,6 +117,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ay-OW-Mt0">
                                                     <rect key="frame" x="297" y="0.0" width="46" height="30"/>
                                                     <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="hasWatchedButtonPressed:" destination="9cK-VO-zdo" eventType="touchUpInside" id="ADh-c2-O2y"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </stackView>

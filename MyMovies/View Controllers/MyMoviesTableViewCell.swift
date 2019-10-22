@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol MyMovieTableViewCellDelegate: class {
+    func toggleHasWatched(cell: MyMoviesTableViewCell)
+}
+
 class MyMoviesTableViewCell: UITableViewCell {
     
 //    MARK: - Properties & Outlets
@@ -15,13 +19,16 @@ class MyMoviesTableViewCell: UITableViewCell {
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var hasWatchedButton: UIButton!
     
+     weak var delegate: MyMovieTableViewCellDelegate?
+    
     var movieController: MovieController?
-    var movieRep: MovieRepresentation?
+//    var movieRep: MovieRepresentation?
     var movie: Movie? {
         didSet {
             updateViews()
         }
     }
+    
     
 //     MARK: - View LifeCycle 
     func updateViews() {
@@ -38,9 +45,8 @@ class MyMoviesTableViewCell: UITableViewCell {
     
     @IBAction func hasWatchedButtonPressed(_ sender: Any) {
         
-        guard let movie = movie else { return }
-        movie.hasWatched = !movie.hasWatched
-        movieController?.updateMovie(movie: movie)
+        delegate?.toggleHasWatched(cell: self)
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

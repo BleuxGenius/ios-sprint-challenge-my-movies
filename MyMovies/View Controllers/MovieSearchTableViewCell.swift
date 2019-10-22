@@ -20,21 +20,25 @@ class MovieSearchTableViewCell: UITableViewCell {
     }
     
     @IBOutlet weak var movieTitleLabel: UILabel!
+    
     @IBOutlet weak var addMovieButton: UIButton!
     
 //    MARK: - Actions
     
     @IBAction func addMovieButtonPressed(_ sender: Any) {
-        print("Pressed!")
-        guard let movie = movieRep else { return }
-        movieController?.createMovie(title: movie.title, identifier: UUID())
-        addMovieButton.setTitle("Added", for: .normal)
+        guard let movieController = movieController, let movie = movieRep else { return }
+        
+        movieController.createMovie(title: movie.title)
     }
 
 //    MARK: - View Life Cycle
     func updateViews() {
         guard let movie = movieRep else { return }
+        
         movieTitleLabel.text = movie.title
-        movieTitleLabel.textColor = .white
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
     }
 }

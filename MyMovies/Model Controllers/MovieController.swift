@@ -58,6 +58,12 @@ class MovieController {
         }.resume()
     }
     
+    func toggleHasWatched(movie: Movie) {
+        movie.hasWatched = !movie.hasWatched
+        saveToPersistentStore()
+        put(movie: movie)
+    }
+    
     // MARK: - Properties
     
     var searchedMovies: [MovieRepresentation] = []
@@ -69,11 +75,11 @@ typealias completionHandler = (Error?) -> Void
 
 let fireBaseURL = URL(string: "https://mymovies-cc95b.firebaseio.com/")!
 
-func createMovie(title: String, identifier: UUID) {
+func createMovie(title: String) {
     
-    let movie = Movie(title: title, identifier: identifier)
-    put(movie: movie)
+    let movie = Movie(title: title)
     saveToPersistentStore()
+    put(movie: movie)
 }
 
 func put(movie: Movie, completionClosure: @escaping completionHandler = { _ in}) {
